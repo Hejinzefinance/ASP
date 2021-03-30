@@ -1,9 +1,7 @@
-# ASP
-
-This is the forked repo of Hejinzefinance.
+# Homework 2
 
 | Name       | Jinze HE（何金泽） |
 | ---------- | ------------------ |
 | Student ID | 1901212582         |
-| Homework 2 | [Link](py/HW2)     |
 
+This is the second homework of Jinze HE.
