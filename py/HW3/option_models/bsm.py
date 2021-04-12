@@ -74,3 +74,18 @@ class Model:
             price(strike, spot, texp, _vol, self.intr, self.divr, cp_sign) - price_in
         vol = sopt.brentq(iv_func, 0, 10)
         return vol
+    
+def bsm_impvol(price_in, strike, spot, texp=None, divr=0, intr=0, cp_sign=1):
+    texp = texp if(texp is None) else texp
+    div_fac = np.exp(-texp*divr)
+    disc_fac = np.exp(-texp*intr)
+    forward = spot/disc_fac*div_fac
+    
+    int_val = disc_fac*np.fmax(cp_sign*(forward-strike), 0)
+    if(int_val > price_in):
+        raise ValueError('Option value is lower than intrinsic value', price_in, int_val) 
+
+    iv_func = lambda _vol: \
+        price(strike, spot, texp, _vol, intr, divr, cp_sign) - price_in
+    vol = sopt.brentq(iv_func, 0, 10)
+    return vol
