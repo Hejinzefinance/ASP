@@ -42,4 +42,16 @@ sabr_norm.sigma
 sabr_norm_mc = opt.sabr.ModelNormalMC(sabr_norm.sigma, vov=sabr_norm.vov, rho=sabr_norm.rho)
 price_hagan = sabr_norm.price(strike, forward, texp)
 price_mc = sabr_norm_mc.price(strike, forward, texp)
-tt=1
+#%%
+strike = np.linspace(75,125,num=25)
+forward = 100
+print(sabr_bsm.__dict__)
+sabr_bsm_cmc = opt.sabr.ModelBsmCondMC(sabr_bsm.sigma, vov=sabr_bsm.vov, rho=sabr_bsm.rho, beta=1)
+price_hagan = sabr_bsm.price(strike, forward, texp)
+price_mc = sabr_bsm_cmc.price(strike, forward, texp)
+# make sure the two prices are similar
+#%% 1.4
+sabr_norm_cmc = opt.sabr.ModelNormalCondMC(sabr_norm.sigma, vov=sabr_norm.vov, rho=sabr_norm.rho, beta=0)
+price_hagan = sabr_norm.price(strike, forward, texp)
+price_mc = sabr_norm_cmc.price(strike, forward, texp)
+tt = 1
