@@ -50,7 +50,7 @@ class ModelBsmMC:
         option_num = strike.shape[0]
         self.option_prices = np.zeros(option_num)
         dt = 0.01
-        time_num = int(texp//dt)
+        time_num = round(texp/dt)
         path_num = 10000
         stock_price_paths = np.zeros((time_num+1, path_num))
         stock_price_paths[0,:] = spot
@@ -99,7 +99,7 @@ class ModelNormalMC:
         option_num = strike.shape[0]
         self.option_prices = np.zeros(option_num)
         dt = 0.01
-        time_num = int(texp // dt)
+        time_num = round(texp / dt)
         path_num = 10000
         stock_price_paths = np.zeros((time_num + 1, path_num))
         stock_price_paths[0, :] = spot
@@ -236,7 +236,7 @@ class ModelNormalCondMC:
         option_num = strike.shape[0]
         self.option_prices = np.zeros(option_num)
         dt = 0.01
-        time_num = round(texp / dt)
+        time_num = round(texp/dt)
         path_num = 10000
         stock_price_paths = np.zeros((time_num + 1, path_num))
         stock_price_paths[0, :] = spot
