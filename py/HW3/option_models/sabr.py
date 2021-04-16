@@ -46,12 +46,11 @@ class ModelBsmMC:
         Generate paths for vol and price first. Then get prices (vector) for all strikes
         You may fix the random number seed
         '''
-        np.random.seed(12345)
         option_num = strike.shape[0]
         self.option_prices = np.zeros(option_num)
         dt = 0.01
         time_num = round(texp/dt)
-        path_num = 10000
+        path_num = 1000
         stock_price_paths = np.zeros((time_num+1, path_num))
         stock_price_paths[0,:] = spot
         sigma_paths = np.zeros((time_num+1, path_num))
@@ -95,12 +94,11 @@ class ModelNormalMC:
         Generate paths for vol and price first. Then get prices (vector) for all strikes
         You may fix the random number seed
         '''
-        np.random.seed(12345)
         option_num = strike.shape[0]
         self.option_prices = np.zeros(option_num)
         dt = 0.01
         time_num = round(texp / dt)
-        path_num = 10000
+        path_num = 1000
         stock_price_paths = np.zeros((time_num + 1, path_num))
         stock_price_paths[0, :] = spot
         sigma_paths = np.zeros((time_num + 1, path_num))
@@ -165,12 +163,11 @@ class ModelBsmCondMC:
         Then get prices (vector) for all strikes
         You may fix the random number seed
         '''
-        np.random.seed(12345)
         option_num = strike.shape[0]
         self.option_prices = np.zeros(option_num)
         dt = 0.01
         time_num = round(texp / dt)
-        path_num = 10000
+        path_num = 1000
         stock_price_paths = np.zeros((time_num + 1, path_num))
         stock_price_paths[0, :] = spot
         sigma_paths = np.zeros((time_num + 1, path_num))
@@ -232,12 +229,11 @@ class ModelNormalCondMC:
         Generate paths for vol only. Then compute integrated variance and normal price.
         You may fix the random number seed
         '''
-        np.random.seed(12345)
         option_num = strike.shape[0]
         self.option_prices = np.zeros(option_num)
         dt = 0.01
         time_num = round(texp/dt)
-        path_num = 10000
+        path_num = 1000
         stock_price_paths = np.zeros((time_num + 1, path_num))
         stock_price_paths[0, :] = spot
         sigma_paths = np.zeros((time_num + 1, path_num))
